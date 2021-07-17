@@ -10,6 +10,8 @@ Given("I am on the {string} page", async (page) => {
 });
 
 When("I input following borrowing information", async (dataTable) => {
+    console.log("=====================RECEIVED TEST DATA ======================")
+    console.log(JSON.stringify(dataTable.raw()));
     await pages['borrowingCalculator'].completeBorrowingInformation(dataTable);
 });
 

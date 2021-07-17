@@ -1,6 +1,6 @@
 Feature: Calculate Borrowing Estimate
-  AS "Home Loan Customer"
-  I WANT "to get a fair estimate of my borrowing capacity"
+  AS A "Home Loan Customer"
+  I WANT TO "get a fair estimate of my borrowing capacity"
   SO THAT "I can make informed decision to apply for home loan"
 
   Scenario Outline: Get a borrowing estimate by filling up all the information
