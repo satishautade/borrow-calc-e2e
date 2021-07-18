@@ -8,17 +8,19 @@ Feature: Calculate Borrowing Estimate
     Given I am on the 'borrowingCalculator' page
     When I input following borrowing information
       | ApplicationType           | <ApplicationType>           |
-      | NumberOfDependents        | <NumberOfDependents>        |
-      | PropertyPurpose           | <PropertyPurpose>           |
+      | NumberOfDependants        | <NumberOfDependants>        |
+      | PropertyType              | <PropertyType>              |
       | YourIncome                | <YourIncome>                |
       | YourOtherIncome           | <YourOtherIncome>           |
       | LivingExpenses            | <LivingExpenses>            |
       | CurrentHomeLoanRepayments | <CurrentHomeLoanRepayments> |
       | OtherLoanRepayments       | <OtherLoanRepayments>       |
       | OtherCommittments         | <OtherCommittments>         |
-      | TotalCreditCardLimit      | <TotalCreditCardLimit>      |
-    Then my borrowing estimate should be equal to <ExpectedBorrowingEstimate>
+      | TotalCreditCardLimits     | <TotalCreditCardLimits>     |
+    And work out how much I could borrow
+    Then my borrowing estimate should be equal to '<ExpectedBorrowingEstimate>'
+    
 
     Examples: Owner/Occupier Single person with 90000 annual income
-      | ApplicationType | NumberOfDependents | PropertyPurpose | YourIncome | YourOtherIncome | LivingExpenses | CurrentHomeLoanRepayments | OtherLoanRepayments | OtherCommittments | TotalCreditCardLimit | ExpectedBorrowingEstimate |
-      | Single          | 0                  | Home to live in | 80000      | 10000           | 500            | 0                         | 100                 | 0                 | 10000                | 507000                    |
+      | ApplicationType | NumberOfDependants | PropertyType    | YourIncome | YourOtherIncome | LivingExpenses | CurrentHomeLoanRepayments | OtherLoanRepayments | OtherCommittments | TotalCreditCardLimits | ExpectedBorrowingEstimate |
+      | Single          | 0                  | Home to live in | 80000      | 10000           | 500            | 0                         | 100                 | 0                 | 10000                 | 507000                    |

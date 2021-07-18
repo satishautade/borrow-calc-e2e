@@ -280,8 +280,9 @@ export const config: WebdriverIO.Config = {
      * @param {String}                   uri      path to feature file
      * @param {GherkinDocument.IFeature} feature  Cucumber feature object
      */
-    // afterFeature: function (uri, feature) {
-    // },
+    afterFeature: function (uri, feature) {
+        browser.saveScreenshot('allure-results/afterFeatureScreenshot.png');
+    },
     
     /**
      * Runs after a WebdriverIO command gets executed

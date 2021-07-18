@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pretest": "rimraf allure-results allure-report",
+    "cleanup": "rimraf allure-results allure-report",
+    "pretest": "npm run cleanup",
     "test": "wdio run wdio.conf.ts",
-    "posttest": "allure open allure-report"
+    "posttest": "",
+    "allure:open": "allure open allure-report"
   },
   "keywords": [],
   "author": "",

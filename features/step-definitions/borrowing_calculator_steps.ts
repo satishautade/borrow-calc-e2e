@@ -2,20 +2,25 @@ import { Given, When, Then } from '@cucumber/cucumber';
 import BorrowingCalculatorPage from '../pageobjects/borrowing.calculator.page';
 
 const pages = {
-    borrowingCalculator: BorrowingCalculatorPage
+  borrowingCalculator: BorrowingCalculatorPage
 };
 
 Given("I am on the {string} page", async (page) => {
-    await pages[page].open()
+  await pages[page].open()
 });
 
 When("I input following borrowing information", async (dataTable) => {
-    console.log("=====================RECEIVED TEST DATA ======================")
-    console.log(JSON.stringify(dataTable.raw()));
-    await pages['borrowingCalculator'].completeBorrowingInformation(dataTable);
+  const borrowingData = dataTable.transpose().hashes()[0];
+  await BorrowingCalculatorPage.inputBorrowingInformation(borrowingData);
 });
 
-Then("my borrowing estimate should be equal to {int}", async (expectedBorrowingEstimate) => {
-    await browser.pause(2000);
+When("work out how much I could borrow", async()=>{
+  await BorrowingCalculatorPage.clickOnWorkoutHowMuchICanBorrowButton();
+});
+
+Then("my borrowing estimate should be equal to {string}", async (expectedBorrowingEstimate) => {
+  const actualBorrowingEstimate = await BorrowingCalculatorPage.getBorrowingEstimate();
+  console.log("Borrowing Estimate => " + actualBorrowingEstimate);
+  // expect(actualBorrowingEstimate).to.equal(expectedBorrowingEstimate);
 });
 
