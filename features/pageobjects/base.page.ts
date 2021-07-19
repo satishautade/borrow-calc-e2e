@@ -12,4 +12,5 @@ export default class BasePage {
         // https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/
         return browser.url(`${config.baseUrl}${path}`)
     }
+    
 }

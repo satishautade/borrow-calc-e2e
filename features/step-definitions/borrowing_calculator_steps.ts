@@ -14,7 +14,7 @@ When("I input following borrowing information", async (dataTable) => {
   await BorrowingCalculatorPage.inputBorrowingInformation(borrowingData);
 });
 
-When("work out how much I could borrow", async()=>{
+When("work out how much I could borrow", async () => {
   await BorrowingCalculatorPage.clickOnWorkoutHowMuchICanBorrowButton();
 });
 

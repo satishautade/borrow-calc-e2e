@@ -1,5 +1,5 @@
 import BasePage from './base.page';
-import { fromFinanceNumberToInteger } from './utils/converters';
+import { fromFinanceNumberToNumber } from './utils/converters';
 /**
  * sub page containing specific selectors and methods for a specific page
  */
@@ -129,7 +129,7 @@ class BorrowingCalculatorPage extends BasePage {
     await borrowingEstimateElement.waitForDisplayed({ timeout: 3000 });
     const actualBorrowingEstimate = await borrowingEstimateElement.getText();
     console.log("YOU CAN BORROW => " + actualBorrowingEstimate);
-    const actualBorrowingEstimateNumber = fromFinanceNumberToInteger(actualBorrowingEstimate);
+    const actualBorrowingEstimateNumber = fromFinanceNumberToNumber(actualBorrowingEstimate);
     return actualBorrowingEstimateNumber;
   }
 

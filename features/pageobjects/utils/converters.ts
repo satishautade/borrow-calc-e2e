@@ -1,13 +1,12 @@
-  /** fromFinanceNumberToInteger
-   * 
-   * @param amountWithDollarSignAndSeparators: string 
-   * @returns amount in number without currency and separators
-   * 
-   * Converts finance number like $607,000 to integer value 607000
+  /**
+   * Converts finance number like $607,000 to numeric value 607000
+   * Can be extended to accommodate other currency formats like AUD607,000
+   * @param {string} amountWithDollarSignAndSeparators finance number
+   * @returns integer
    */
-  export function fromFinanceNumberToInteger(amountWithCurrencySignAndSeparators: string ): number {
+  export function fromFinanceNumberToNumber(amountWithCurrencySignAndSeparators: string ): number {
     let amountWithoutDollar = amountWithCurrencySignAndSeparators.substring(1);
-    let intergerValue = parseInt(amountWithoutDollar.replace(',',''));
-    console.log(`Converted ${amountWithCurrencySignAndSeparators} => ${intergerValue}`);
-    return intergerValue;
+    let numericValue = parseInt(amountWithoutDollar.replace(',',''));
+    console.log(`Converted ${amountWithCurrencySignAndSeparators} => ${numericValue}`);
+    return numericValue;
   }
