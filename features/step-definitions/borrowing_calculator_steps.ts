@@ -10,6 +10,7 @@ Given("I am on the {string} page", async (page) => {
 });
 
 When("I input following borrowing information", async (dataTable) => {
+  // Convert the vertical table into a horizontal one and derive hashmap (key, value) pairs
   const borrowingData = dataTable.transpose().hashes()[0];
   await BorrowingCalculatorPage.inputBorrowingInformation(borrowingData);
 });
@@ -18,9 +19,9 @@ When("work out how much I could borrow", async () => {
   await BorrowingCalculatorPage.clickOnWorkoutHowMuchICanBorrowButton();
 });
 
-Then("my borrowing estimate should be equal to {string}", async (expectedBorrowingEstimate) => {
+Then("my borrowing estimate should be equal to {int}", async (expectedBorrowingEstimate) => {
   const actualBorrowingEstimate = await BorrowingCalculatorPage.getBorrowingEstimate();
-  console.log("Borrowing Estimate => " + actualBorrowingEstimate);
-  // expect(actualBorrowingEstimate).to.equal(expectedBorrowingEstimate);
+  console.log("Actual Borrowing Estimate => " + actualBorrowingEstimate);
+  expect(actualBorrowingEstimate).toEqual(expectedBorrowingEstimate);
 });
 

@@ -18,7 +18,7 @@ Feature: Calculate Borrowing Estimate
       | OtherCommittments         | <OtherCommittments>         |
       | TotalCreditCardLimits     | <TotalCreditCardLimits>     |
     And work out how much I could borrow
-    Then my borrowing estimate should be equal to '<ExpectedBorrowingEstimate>'
+    Then my borrowing estimate should be equal to <ExpectedBorrowingEstimate>
     
 
     Examples: Owner/Occupier Single person with 90000 annual income

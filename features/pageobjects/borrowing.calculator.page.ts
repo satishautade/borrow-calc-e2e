@@ -23,8 +23,8 @@ class BorrowingCalculatorPage extends BasePage {
   /**
   * overwrite specifc options to adapt it to page object
   */
-  open() {
-    return super.open('personal/home-loans/calculators-tools/much-borrow/');
+  async open() {
+    return await super.open('personal/home-loans/calculators-tools/much-borrow/');
   }
 
   /**
@@ -33,7 +33,9 @@ class BorrowingCalculatorPage extends BasePage {
    */
   async inputBorrowingInformation(borrowingDataHashmap) {
     console.log(JSON.stringify(borrowingDataHashmap));
-    await Object.keys(borrowingDataHashmap).forEach(async keyName => {
+    const keys = Object.keys(borrowingDataHashmap);
+    for(const keyName of keys) {
+      // call appropriate page method for handling relevant data
       switch (keyName.toLowerCase()) {
 
         case 'applicationtype':
@@ -79,19 +81,19 @@ class BorrowingCalculatorPage extends BasePage {
         default:
           new Error(`No property with name ${keyName} found in borrowing data.`)
       }
-    });
-    await this.clickOnWorkoutHowMuchICanBorrowButton();
+    };
   }
 
   async clickOnWorkoutHowMuchICanBorrowButton() {
     const buttonCalculateBorrowingPower = await this.buttonBorrowCalculator;
     await buttonCalculateBorrowingPower.waitForDisplayed({ timeout: 3000 });
     await buttonCalculateBorrowingPower.click();
+    await browser.pause(1000);
   }
 
   async selectApplicationType(applicationType) {
-    const applicationTypeLocator = this.applicationTypePartialLocator + applicationType.toLowerCase()
-    const appTypeButton = await $(applicationTypeLocator).waitForClickable({timeout:2000});
+    const applicationTypeLocator = this.applicationTypePartialLocator + applicationType.toLowerCase();
+    const appTypeButton = await $(applicationTypeLocator);
     await appTypeButton.click();
   }
 
@@ -105,11 +107,11 @@ class BorrowingCalculatorPage extends BasePage {
     console.log("propertyPurpose => " + propertyPurpose);
     switch (propertyPurpose.toLowerCase()) {
       case 'home to live in':
-        const selectHomeToLiveIn = await $('input#borrow_type_home').waitForClickable({timeout:2000});
+        const selectHomeToLiveIn = await $('input#borrow_type_home');
         await selectHomeToLiveIn.click();
         break;
       case 'residential investment':
-        const selectResidentialInvestment = await $('input#borrow_type_investment').waitForClickable({timeout: 2000});
+        const selectResidentialInvestment = await $('input#borrow_type_investment')
         await selectResidentialInvestment.click();
         break;
       default:

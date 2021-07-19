@@ -1,4 +1,3 @@
-import allure from 'allure-commandline';
 import { hooks } from './hooks';
 
 export const config: WebdriverIO.Config = {
