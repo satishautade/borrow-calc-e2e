@@ -24,7 +24,7 @@ class BorrowingCalculatorPage extends BasePage {
   * overwrite specifc options to adapt it to page object
   */
   async open() {
-    return await super.open('personal/home-loans/calculators-tools/much-borrow/');
+    return await super.open('/personal/home-loans/calculators-tools/much-borrow/');
   }
 
   /**

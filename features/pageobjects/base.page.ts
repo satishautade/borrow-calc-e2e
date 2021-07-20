@@ -1,4 +1,3 @@
-const config = require('../../wdio.conf').config;
 /**
 * main page object containing all methods, selectors and functionality
 * that is shared across all page objects
@@ -10,7 +9,7 @@ export default class BasePage {
     */
     open (path: string) {
         // https://www.anz.com.au/personal/home-loans/calculators-tools/much-borrow/
-        return browser.url(`${config.baseUrl}${path}`)
+        return browser.url(`${path}`)
     }
     
 }

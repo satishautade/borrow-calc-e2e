@@ -1,3 +1,4 @@
+@borrowing @regression
 Feature: Calculate Borrowing Estimate
   AS A "Home Loan Customer"
   I WANT TO "get a fair estimate of my borrowing capacity"
